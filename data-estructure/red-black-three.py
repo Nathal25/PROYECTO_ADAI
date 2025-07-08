@@ -3,14 +3,20 @@ RED='RED'
 BLACK='RED'
 
 
+
 class Node():
-    def __init__(self,color:str,left:'Node',right:'Node',parent:'Node',key:object):
+    def __init__(self,color:str,left:'Node',right:'Node',parent:'Node',data_object:object,key_attr:str):
         self.color=color
         self.left=left
         self.right=right
         self.parent=parent
-        self.key=key
+        self.object=data_object
+        self.key=getattr(data_object,key_attr)
 
+    def set_key(self,name:str):
+        self.key=getattr(self.object,name)
+    
+    
 class RBThree:
 
     def __init__(self,root:Node,nil:Node):
@@ -85,6 +91,71 @@ def RB_INSERT_FIXUP(T:RBThree,z:Node):
                 LEFT_ROTATE(T,z.parent.parent)
     T.root.color=BLACK #root always be black
                     
+def RB_INSERT(T:RBThree,z:Node):
+    y=T.nil
+    x=T.root
+    while x!=T.nil:
+        y=x
+        if z.key<x.key:
+            x=x.left
+        else:
+            x=x.right
+    z.parent=y
+    if y==T.nil:
+        T.root=z
+    elif z.key<y.key:
+        y.left=z
+    else:
+        y.right=z
+    z.left=T.nil
+    z.right=T.nil
+    z.color=RED
+    RB_INSERT_FIXUP(T,z)
+
+#binary search three methods
+
+def INORDER_THREE_WALK(T:RBThree,x:Node):
+    if x!=T.nil:
+        INORDER_THREE_WALK(T,x.left)
+        print(x.key)
+        INORDER_THREE_WALK(T,x.right)
+
+
+def TREE_SEARCH(T:RBThree,x:Node,k:object):
+    while x!=T.nil and k!=x.key:
+        if k<x.key:
+            x=x.left
+        else:
+            x=x.right
+    return x
+
+def THREE_MINIMUM(T:RBThree,x:Node):
+    while x.left!=T.nil:
+        x=x.left
+    return x
+
+def THREE_MAXIMUM(T:RBThree,x:Node):
+    while x.right!=T.nil:
+        x=x.right
+    return x
+
+def THREE_SUCCESSOR(T:RBThree,x:Node):
+    if x.right!=T.nil:
+        return THREE_MINIMUM(T,x.right)
+    y=x.parent
+    while y != T.nil and x==y.right:
+        x=y
+        y=y.parent
+    return y
+
+def THREE_PREDECESSOR(T:RBThree,x:Node):
+    if x.left!=T.nil:
+        return THREE_MAXIMUM(T,x.left)
+    y=x.parent
+    while y != T.nil and x==y.left:
+        x=y
+        y=y.parent
+    return y
 
 
 
