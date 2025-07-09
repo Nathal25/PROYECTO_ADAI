@@ -91,44 +91,40 @@ def RB_INSERT_FIXUP(T:RBThree,z:Node):
                 LEFT_ROTATE(T,z.parent.parent)
     T.root.color=BLACK #root always be black
                     
-def RB_INSERT(T:RBThree,z:Node,key_primary_atrr:str,key_secondary_attr:str,key_third_attr:str):
+def RB_INSERT(T:RBThree,z:Node,key_primary_attr:str,key_secondary_attr:str,key_third_attr:str):
     y=T.nil
     x=T.root
-    attributes=(key_primary_atrr,key_secondary_attr,key_third_attr)
+    z_key=(
+            getattr(z,key_primary_attr),
+            getattr(z,key_secondary_attr),
+            getattr(z,key_third_attr)
+        )
+    
     while x!=T.nil:
-        y=x    
-        index_attr=0
-        while index_attr<3:
-            z_key=getattr(z,attributes[index_attr])
-            x_key=getattr(x,attributes[index_attr])
-            if z_key<x_key:
-                x=x.left
-                break
-            if z_key>x_key:
-                x=x.right
-                break       
-            index_attr+=1
+        y=x
+        x_key=(
+            getattr(x,key_primary_attr),
+            getattr(x,key_secondary_attr),
+            getattr(x,key_third_attr)
+        )
+        
+        if z_key<x_key:
+            x=x.left          
         else:
-            x=x.right # caso arbitrario donde todas las claves son iguales
+            x=x.right
 
     z.parent=y
+    y_key=(
+        getattr(y,key_primary_attr),
+        getattr(y,key_secondary_attr),
+        getattr(y,key_third_attr)
+    )
     if y==T.nil:
         T.root=z
-    index_attr=0
-    while index_attr<3:
-        z_key=getattr(z,attributes[index_attr])
-        y_key=getattr(y,attributes[index_attr])
-
-        if z_key<y_key:
-            y.left=z
-            break
-        if z_key>y_key:
-            y.right=z
-            break
-        index_attr+=1
+    elif z_key<y_key:
+        y.left=z
     else:
-        y.right=z #caso arbitrario
-
+        y.right=z    
     z.left=T.nil
     z.right=T.nil
     z.color=RED
