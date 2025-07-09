@@ -1,3 +1,4 @@
+from merge_sort import merge_sort
 # Pregunta
 
 class Pregunta:
@@ -33,14 +34,26 @@ def promedio_experticia(self):
     if contador == 0:
         return 0
     return total / contador 
-    
-
 
 # Preguntas - Mediana de opiniones
 def mediana_opinion(self):
-    
+    return self.encuestados // 2
 # Preguntas - Moda de opiniones 
-def moda_opinion(self):
+
+# Ordena los encuestados por opinion
+def ordenar_encuestados(self):
+    def comparar(a, b):
+        if a.opinion > b.opinion:
+             return True
+        elif a.opinion < b.opinion:
+            return False
+        else:
+            if a.experticia > b.experticia:
+                return True
+            else:
+                return False
+    self.encuestados = merge_sort(self.encuestados, comparar)
+
 
 
 
