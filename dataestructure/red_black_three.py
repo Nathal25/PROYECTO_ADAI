@@ -5,7 +5,7 @@ BLACK='RED'
 
 
 class Node():
-    def __init__(self,color:str,left:'Node',right:'Node',parent:'Node',data_object:object,key_primary_attr:str,key_secondary_attr:str,key_third_attr:str):
+    def __init__(self,color:str=BLACK,left:'Node'=None,right:'Node'=None,parent:'Node'=None,data_object:object=None,key_primary_attr:str=None,key_secondary_attr:str=None,key_third_attr:str=None):
         self.color=color
         self.left=left
         self.right=right
@@ -19,7 +19,7 @@ class Node():
 
     def set_key(self,name:str):
         self.key=getattr(self.object,name)
-    
+NIL=Node()   
     
 class RBThree:
 
