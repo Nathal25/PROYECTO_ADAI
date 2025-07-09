@@ -5,13 +5,17 @@ BLACK='RED'
 
 
 class Node():
-    def __init__(self,color:str,left:'Node',right:'Node',parent:'Node',data_object:object,key_attr:str):
+    def __init__(self,color:str,left:'Node',right:'Node',parent:'Node',data_object:object,key_primary_attr:str,key_secondary_attr:str,key_third_attr:str):
         self.color=color
         self.left=left
         self.right=right
         self.parent=parent
         self.object=data_object
-        self.key=getattr(data_object,key_attr)
+        self.key=(
+            getattr(data_object,key_primary_attr),
+            getattr(data_object,key_secondary_attr),
+            getattr(data_object,key_third_attr),
+        )
 
     def set_key(self,name:str):
         self.key=getattr(self.object,name)
@@ -91,37 +95,19 @@ def RB_INSERT_FIXUP(T:RBThree,z:Node):
                 LEFT_ROTATE(T,z.parent.parent)
     T.root.color=BLACK #root always be black
                     
-def RB_INSERT(T:RBThree,z:Node,key_primary_attr:str,key_secondary_attr:str,key_third_attr:str):
+def RB_INSERT(T:RBThree,z:Node):
     y=T.nil
     x=T.root
-    z_key=(
-            getattr(z,key_primary_attr),
-            getattr(z,key_secondary_attr),
-            getattr(z,key_third_attr)
-        )
-    
     while x!=T.nil:
-        y=x
-        x_key=(
-            getattr(x,key_primary_attr),
-            getattr(x,key_secondary_attr),
-            getattr(x,key_third_attr)
-        )
-        
-        if z_key<x_key:
+        y=x   
+        if z.key<x.key:
             x=x.left          
         else:
             x=x.right
-
     z.parent=y
-    y_key=(
-        getattr(y,key_primary_attr),
-        getattr(y,key_secondary_attr),
-        getattr(y,key_third_attr)
-    )
     if y==T.nil:
         T.root=z
-    elif z_key<y_key:
+    elif z.key<y.key:
         y.left=z
     else:
         y.right=z    
