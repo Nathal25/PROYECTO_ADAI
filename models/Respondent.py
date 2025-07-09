@@ -5,3 +5,6 @@ class Respondent:
         self.experience=experience
         self.opinion=opinion
 
+    def print_respondent(self):
+        print(f'id:{self.id}\nname:{self.name}\nexperience:{self.experience}\nopinion:{self.opinion}')
+
