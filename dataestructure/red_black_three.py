@@ -129,7 +129,7 @@ def INORDER_THREE_WALK(T:RBThree,x:Node,attr:str):
         INORDER_THREE_WALK(T,x.right,attr)
 
 def COUNT_THREE_NODES(T:RBThree,x:Node):
-    if x!=T.nil:
+    if x==T.nil:
         return 0
     return 1 + COUNT_THREE_NODES(T,x.left)+COUNT_THREE_NODES(T,x.right)
 

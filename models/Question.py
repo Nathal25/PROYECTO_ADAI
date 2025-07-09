@@ -19,9 +19,6 @@ class Question:
         print("respondents:")
         print_respondents()
 
-
-
-
     def calculate_opinion_average(self,acum=0):
         x=self.respondents.root
         def recursive_aux(x,acum):
