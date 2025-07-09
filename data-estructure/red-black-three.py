@@ -91,22 +91,54 @@ def RB_INSERT_FIXUP(T:RBThree,z:Node):
                 LEFT_ROTATE(T,z.parent.parent)
     T.root.color=BLACK #root always be black
                     
-def RB_INSERT(T:RBThree,z:Node):
+def RB_INSERT(T:RBThree,z:Node,key_secondary_attr:str,key_third_attr:str):
     y=T.nil
     x=T.root
     while x!=T.nil:
         y=x
         if z.key<x.key:
             x=x.left
-        else:
+        elif z.key>x.key:
             x=x.right
+        else:
+            z_secondary=getattr(z,key_secondary_attr)
+            y_secondary=getattr(y,key_secondary_attr)
+
+            if z_secondary<y_secondary:
+                x=x.left
+            elif z_secondary>y_secondary:
+                x=x.right
+            else:
+                z_third=getattr(z,key_third_attr)
+                y_third=getattr(y,key_third_attr)
+                if z_third<y_third:
+                    x=x.left
+                else:
+                    x=x.right
     z.parent=y
     if y==T.nil:
         T.root=z
     elif z.key<y.key:
         y.left=z
-    else:
+    elif z.key>y.key:
         y.right=z
+    else:
+        z_secondary = getattr(z, key_secondary_attr)
+        y_secondary = getattr(y, key_secondary_attr)
+
+        if z_secondary < y_secondary:
+            y.left = z
+        elif z_secondary > y_secondary:
+            y.right = z
+        else:
+            z_third = getattr(z, key_third_attr)
+            y_third = getattr(y, key_third_attr)
+
+            if z_third < y_third:
+                y.left = z
+            else:
+                y.right = z
+
     z.left=T.nil
     z.right=T.nil
     z.color=RED
