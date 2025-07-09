@@ -124,6 +124,10 @@ def INORDER_THREE_WALK(T:RBThree,x:Node):
         print(x.key)
         INORDER_THREE_WALK(T,x.right)
 
+def COUNT_THREE_NODES(T:RBThree,x:Node):
+    if x!=T.nil:
+        return 0
+    return 1 + COUNT_THREE_NODES(T,x.left)+COUNT_THREE_NODES(T,x.right)
 
 def TREE_SEARCH(T:RBThree,x:Node,k:object):
     while x!=T.nil and k!=x.key:
