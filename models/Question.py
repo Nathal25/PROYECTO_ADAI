@@ -5,6 +5,7 @@ class Question:
         self.id=id
         self.respondents= rbt.RBThree()
         self.opinion_average=None
+
     def insert_respondent(self,respondent):
         rbt.RB_INSERT(self.respondents,rbt.Node(
             data_object=respondent,
@@ -12,6 +13,7 @@ class Question:
             key_secondary_attr='experience',
             key_third_attr='id'
             ))
+        
     def print_info(self,attr):
         def print_respondents():
             rbt.INORDER_THREE_WALK(self.respondents,self.respondents.root,attr)
@@ -21,7 +23,7 @@ class Question:
 
     def calculate_opinion_average(self,acum=0):
         x=self.respondents.root
-        def recursive_aux(x,acum):
+        def recursive_aux(x:rbt.Node,acum:int):
             if x!=self.respondents.nil:
                 acum=recursive_aux(x.left,acum)
                 acum+=getattr(x.object,'opinion')
@@ -29,5 +31,12 @@ class Question:
             return acum
             
         return recursive_aux(x,acum)/self.respondents.root.size
+    
+    def calculate_opinion_median(self):
+        ith=self.respondents.root.size//2
+        x=rbt.OS_SELECT(self.respondents.root,ith)
+        return getattr(x.object,'opinion')
+    
+    
         
             
