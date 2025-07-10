@@ -3,13 +3,13 @@ RED='RED'
 BLACK='BLACK'
 
 class Node():
-    def __init__(self,color:str=BLACK,left:'Node'=None,right:'Node'=None,parent:'Node'=None,data_object:object=None,key_primary_attr:str=None,key_secondary_attr:str=None,key_third_attr:str=None):
-        self.color=color
-        self.left=left
-        self.right=right
-        self.parent=parent
+    def __init__(self,data_object:object=None,key_primary_attr:str=None,key_secondary_attr:str=None,key_third_attr:str=None):
+        self.color=BLACK
+        self.left=None
+        self.right=None
+        self.parent=None
         self.object=data_object
-        self.size=right.size+left.size + 1
+        self.size=1
         if key_primary_attr and key_secondary_attr and key_third_attr:
             self.key=(
                 getattr(data_object,key_primary_attr),
@@ -24,7 +24,8 @@ class Node():
 NIL=Node()
 NIL.parent=NIL
 NIL.right=NIL
-NIL.left=NIL   
+NIL.left=NIL
+NIL.size=0   
     
 class RBThree:
 
@@ -109,7 +110,8 @@ def RB_INSERT(T:RBThree,z:Node):
     y=T.nil
     x=T.root
     while x!=T.nil:
-        y=x   
+        y=x
+        y.size+=1   
         if z.key<x.key:
             x=x.left          
         else:
@@ -134,10 +136,7 @@ def INORDER_THREE_WALK(T:RBThree,x:Node,attr:str):
         print(getattr(x.object,attr))
         INORDER_THREE_WALK(T,x.right,attr)
 
-def COUNT_THREE_NODES(T:RBThree,x:Node):
-    if x==T.nil:
-        return 0
-    return 1 + COUNT_THREE_NODES(T,x.left)+COUNT_THREE_NODES(T,x.right)
+
 
 def TREE_SEARCH(T:RBThree,x:Node,k:object):
     while x!=T.nil and k!=x.key:

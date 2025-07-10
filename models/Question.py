@@ -28,6 +28,6 @@ class Question:
                 acum=recursive_aux(x.right,acum)
             return acum
             
-        return recursive_aux(x,acum)/rbt.COUNT_THREE_NODES(self.respondents,self.respondents.root)
+        return recursive_aux(x,acum)/self.respondents.root.size
         
             
