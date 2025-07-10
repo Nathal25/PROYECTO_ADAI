@@ -9,6 +9,7 @@ class Node():
         self.right=right
         self.parent=parent
         self.object=data_object
+        self.size=right.size+left.size + 1
         if key_primary_attr and key_secondary_attr and key_third_attr:
             self.key=(
                 getattr(data_object,key_primary_attr),
@@ -45,6 +46,9 @@ def LEFT_ROTATE(T:RBThree,x:Node):
         x.parent.right=y
     y.left=x
     x.parent=y
+    y.size=x.size
+    x.size=x.left.size + x.right.size + 1
+    
 
 def RIGHT_ROTATE(T:RBThree,x:Node):
     y=x.left
@@ -60,6 +64,8 @@ def RIGHT_ROTATE(T:RBThree,x:Node):
         x.parent.left=y
     y.right=x
     x.parent=y
+    y.size=x.size
+    x.size=x.left.size + x.right.size + 1
 
 
 def RB_INSERT_FIXUP(T:RBThree,z:Node):
@@ -169,5 +175,22 @@ def THREE_PREDECESSOR(T:RBThree,x:Node):
         y=y.parent
     return y
 
+#statistics orders
 
+def OS_SELECT(x:Node,i:int):
+    r=x.left.size + 1
+    if i==r:
+        return x
+    elif i<r:
+        return OS_SELECT(x.left,i)
+    else:
+        return OS_SELECT(x.right,i-r)
 
+def OS_RANK(T:RBThree,x:Node):
+    r=x.left.size +1
+    y=x
+    while y!=T.root:
+        if y==y.parent.right:
+            r=r + y.parent.size+1
+        y=y.parent
+    return r
