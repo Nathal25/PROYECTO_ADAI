@@ -3,23 +3,14 @@ RED='RED'
 BLACK='BLACK'
 
 class Node():
-    def __init__(self,data_object:object=None,key_primary_attr:str=None,key_secondary_attr:str=None,key_third_attr:str=None):
+    def __init__(self,data_object:object=None,keys:tuple=()):
         self.color=BLACK
         self.left=None
         self.right=None
         self.parent=None
         self.object=data_object
         self.size=1
-        if key_primary_attr and key_secondary_attr and key_third_attr:
-            self.key=(
-                getattr(data_object,key_primary_attr),
-                getattr(data_object,key_secondary_attr),
-                getattr(data_object,key_third_attr)
-            )
-        else:
-            self.key=None
-
-    
+        self.key=keys
 
 NIL=Node()
 NIL.parent=NIL
@@ -27,13 +18,13 @@ NIL.right=NIL
 NIL.left=NIL
 NIL.size=0   
     
-class RBThree:
+class RBTree:
 
     def __init__(self,root:Node=NIL):
         self.root=root
         self.nil=NIL
     
-def LEFT_ROTATE(T:RBThree,x:Node):
+def LEFT_ROTATE(T:RBTree,x:Node):
     y=x.right
     x.right=y.left
     if y.left!=T.nil:
@@ -51,7 +42,7 @@ def LEFT_ROTATE(T:RBThree,x:Node):
     x.size=x.left.size + x.right.size + 1
     
 
-def RIGHT_ROTATE(T:RBThree,x:Node):
+def RIGHT_ROTATE(T:RBTree,x:Node):
     y=x.left
     x.left=y.right
     if y.right!= T.nil:
@@ -69,7 +60,7 @@ def RIGHT_ROTATE(T:RBThree,x:Node):
     x.size=x.left.size + x.right.size + 1
 
 
-def RB_INSERT_FIXUP(T:RBThree,z:Node):
+def RB_INSERT_FIXUP(T:RBTree,z:Node):
     while z.parent.color==RED:
         # case: parent is left child
         if z.parent==z.parent.parent.left:
@@ -106,7 +97,7 @@ def RB_INSERT_FIXUP(T:RBThree,z:Node):
                 LEFT_ROTATE(T,z.parent.parent)
     T.root.color=BLACK #root always be black
                     
-def RB_INSERT(T:RBThree,z:Node):
+def RB_INSERT(T:RBTree,z:Node):
     y=T.nil
     x=T.root
     while x!=T.nil:
@@ -130,15 +121,19 @@ def RB_INSERT(T:RBThree,z:Node):
 
 #binary search three methods
 
-def INORDER_THREE_WALK(T:RBThree,x:Node,attr:str):
+def INORDER_THREE_WALK(T:RBTree,x:Node,attr:str):
     if x!=T.nil:
         INORDER_THREE_WALK(T,x.left,attr)
         print(getattr(x.object,attr))
         INORDER_THREE_WALK(T,x.right,attr)
 
+def INORDER_THREE_WALK_F(T: RBTree, x: Node, func):
+    if x != T.nil:
+        INORDER_THREE_WALK_F(T, x.left, func)
+        func(x)  
+        INORDER_THREE_WALK_F(T, x.right, func)
 
-
-def TREE_SEARCH(T:RBThree,x:Node,k:object):
+def TREE_SEARCH(T:RBTree,x:Node,k:object):
     while x!=T.nil and k!=x.key:
         if k<x.key:
             x=x.left
@@ -146,17 +141,17 @@ def TREE_SEARCH(T:RBThree,x:Node,k:object):
             x=x.right
     return x
 
-def THREE_MINIMUM(T:RBThree,x:Node):
+def THREE_MINIMUM(T:RBTree,x:Node):
     while x.left!=T.nil:
         x=x.left
     return x
 
-def THREE_MAXIMUM(T:RBThree,x:Node):
+def THREE_MAXIMUM(T:RBTree,x:Node):
     while x.right!=T.nil:
         x=x.right
     return x
 
-def THREE_SUCCESSOR(T:RBThree,x:Node):
+def THREE_SUCCESSOR(T:RBTree,x:Node):
     if x.right!=T.nil:
         return THREE_MINIMUM(T,x.right)
     y=x.parent
@@ -165,7 +160,7 @@ def THREE_SUCCESSOR(T:RBThree,x:Node):
         y=y.parent
     return y
 
-def THREE_PREDECESSOR(T:RBThree,x:Node):
+def THREE_PREDECESSOR(T:RBTree,x:Node):
     if x.left!=T.nil:
         return THREE_MAXIMUM(T,x.left)
     y=x.parent
@@ -185,7 +180,7 @@ def OS_SELECT(x:Node,i:int):
     else:
         return OS_SELECT(x.right,i-r)
 
-def OS_RANK(T:RBThree,x:Node):
+def OS_RANK(T:RBTree,x:Node):
     r=x.left.size +1
     y=x
     while y!=T.root:

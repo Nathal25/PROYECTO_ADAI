@@ -1,5 +1,5 @@
 class Respondent:
-    def __init__(self,name,experience,opinion,id):
+    def __init__(self,name,opinion,experience,id):
         self.id=id
         self.name=name
         self.experience=experience
