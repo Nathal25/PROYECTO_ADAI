@@ -1,3 +1,4 @@
+from typing import Callable
 
 RED='RED'
 BLACK='BLACK'
@@ -11,6 +12,7 @@ class Node():
         self.object=data_object
         self.size=1
         self.key=keys
+
 
 NIL=Node()
 NIL.parent=NIL
@@ -121,11 +123,11 @@ def RB_INSERT(T:RBTree,z:Node):
 
 #binary search three methods
 
-def INORDER_THREE_WALK(T:RBTree,x:Node,attr:str):
-    if x!=T.nil:
-        INORDER_THREE_WALK(T,x.left,attr)
-        print(getattr(x.object,attr))
-        INORDER_THREE_WALK(T,x.right,attr)
+def INORDER_THREE_WALK_GENERIC(T: RBTree, x: Node, body: Callable, *args, **kwargs):
+    if x != T.nil:
+        INORDER_THREE_WALK_GENERIC(T, x.left, body, *args, **kwargs)
+        body(x, *args, **kwargs)  
+        INORDER_THREE_WALK_GENERIC(T, x.right, body, *args, **kwargs)
 
 def INORDER_THREE_WALK_F(T: RBTree, x: Node, func):
     if x != T.nil:
@@ -150,6 +152,18 @@ def THREE_MAXIMUM(T:RBTree,x:Node):
     while x.right!=T.nil:
         x=x.right
     return x
+
+def TREE_AVERAGE_ATTR(T:RBTree,x:Node,f:Callable,*args,**kwargs):
+    
+    def recursive_aux(x:Node):
+        if x==T.nil:
+            return 0.0
+        left_sum=recursive_aux(x.left)
+        node_value=f(x,*args,**kwargs)
+        right_sum=recursive_aux(x.right)
+        return left_sum + right_sum + node_value 
+        
+    return recursive_aux(x)/x.size if x.size > 0 else 0.0 
 
 def THREE_SUCCESSOR(T:RBTree,x:Node):
     if x.right!=T.nil:
