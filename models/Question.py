@@ -80,6 +80,22 @@ class Question:
         INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, contar_opinion)
         return (modes[0],count[0]/self.respondents.root.size * 100)
 
+#funcion para hallar el promedio de opiniones
+def calculate_average_opinion(self):
+    total_opinion = 0
+    count = 0
+
+    def sumar_opinion(node):
+        nonlocal total_opinion, count
+        opinion = getattr(node.object, 'opinion')
+        total_opinion += opinion
+        count += 1
+
+    INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, sumar_opinion)
+
+    if count == 0:
+        return 0
+    return total_opinion / count
 
 """
 funcion para hallar el mayor consenso
