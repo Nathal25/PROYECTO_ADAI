@@ -74,6 +74,23 @@ class Topic:
         rbt.INORDER_THREE_WALK_GENERIC(self.questions,self.questions.root,max_consensus,state)
         return state
     
+    def max_opinion_avg_question(self):
+        state={
+            'question_max':None,
+            'max_opinion_avg':-math.inf
+        }
+        
+        def max_opinion_avg(node:rbt.Node,state:dict[str,any]):
+            op_avg = getattr(node.object,'calculate_average_opinion')()
+            if op_avg>state['max_opinion_avg']:
+                state['max_opinion_avg']=op_avg
+                state['question_max']=node.object
+
+            
+        rbt.INORDER_THREE_WALK_GENERIC(self.questions,self.questions.root,max_opinion_avg,state)
+        return state
+
+    
     def num_respondents(self):
         state={"count":0}
         
