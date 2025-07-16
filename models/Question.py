@@ -26,33 +26,6 @@ class Question:
         return {'max_attr':getattr(x.object,'opinion')}
     
 
-    # def calculate_opinion_mode(self):
-    #     prev = [None]
-    #     count = [0]
-    #     max_count = [0]
-    #     modes = []
-
-    #     def contar_opinion(node):
-    #         opinion = getattr(node.object, 'opinion')
-
-    #         if prev[0] == opinion:
-    #             count[0] += 1
-    #         else:
-    #             count[0] = 1
-
-    #         if count[0] > max_count[0]:
-    #             max_count[0] = count[0]
-    #             modes.clear()
-    #             modes.append(opinion)
-    #         elif count[0] == max_count[0]:
-    #             if opinion not in modes:
-    #                 modes.append(opinion)
-
-    #         prev[0] = opinion
-
-    #     INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, contar_opinion)
-    #     return {'max_attr':modes[0]}
-
     def calculate_opinion_mode_consensus(self,attr):
         prev = [None]
         count = [0]

@@ -46,11 +46,25 @@ class Survey:
 
             )
     
+    def min_median_question(self):
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.min_median_question()
+
+            )
+    
 
     def max_consensus_question(self):
         return rbt.MAX_GENERIC_QUESTION_ATTR(
             self.topics,
             lambda node: node.object.max_consensus_question()
+
+            )
+    
+    def min_consensus_question(self):
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.min_consensus_question()
 
             )
     
@@ -60,16 +74,29 @@ class Survey:
             lambda node: node.object.max_mode_question()
 
             )
+    def min_mode_question(self):
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.min_mode_question()
+
+            )
     
     
     
     def max_opinion_avg_question(self):
         
-        result= rbt.MAX_GENERIC_QUESTION_ATTR(
+        return rbt.MAX_GENERIC_QUESTION_ATTR(
             self.topics,
             lambda node: node.object.max_opinion_avg_question()
         )
-        return result['question_max']
+        
 
-    
+    def min_opinion_avg_question(self):
+        
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.min_opinion_avg_question()
+        )
+        
+
 

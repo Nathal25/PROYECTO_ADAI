@@ -31,8 +31,13 @@ class Topic:
             lambda node: getattr(node.object,'calculate_opinion_median')()
 
             )
+    
+    def min_median_question(self):
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
+            self.questions,
+            lambda node: getattr(node.object,'calculate_opinion_median')()
 
-        
+            )
 
     def max_mode_question(self):
         return rbt.MAX_GENERIC_QUESTION_ATTR(
@@ -40,11 +45,23 @@ class Topic:
             lambda node: node.object.calculate_opinion_mode_consensus('mode')
 
             )
-
-
     
+    def min_mode_question(self):
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
+            self.questions,
+            lambda node: node.object.calculate_opinion_mode_consensus('mode')
+
+            )
+
     def max_consensus_question(self):
         return rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.questions,
+            lambda node: node.object.calculate_opinion_mode_consensus('concensus')
+
+            )
+    
+    def min_consensus_question(self):
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
             self.questions,
             lambda node: node.object.calculate_opinion_mode_consensus('concensus')
 
@@ -54,6 +71,13 @@ class Topic:
     
     def max_opinion_avg_question(self):
         return rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.questions,
+            lambda node: node.object.calculate_average_opinion()
+
+            )
+    
+    def min_opinion_avg_question(self):
+        return rbt.MIN_GENERIC_QUESTION_ATTR(
             self.questions,
             lambda node: node.object.calculate_average_opinion()
 

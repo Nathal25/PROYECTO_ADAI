@@ -199,6 +199,21 @@ def MAX_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
     INORDER_THREE_WALK_GENERIC(tree,tree.root,max_generic_aux,state,f,*args,**kwargs)
     return state
 
+def MIN_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
+    state={
+        'question_min':None,
+        'min_attr':math.inf
+    }
+        
+    def min_generic_aux(node:Node,state:dict[str,Any],f:Callable,*args,**kwargs):
+        result=f(node,*args,**kwargs)
+        if result['min_attr']<state['min_attr']:
+            state['min_attr']=result['min_attr']
+            state['question_min']=node.object
+    
+    INORDER_THREE_WALK_GENERIC(tree,tree.root,min_generic_aux,state,f,*args,**kwargs)
+    return state
+
 #statistics orders
 
 def OS_SELECT(x:Node,i:int):
