@@ -195,9 +195,13 @@ def MAX_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
         if result['max_attr']>state['max_attr']:
             state['max_attr']=result['max_attr']
             state['question_max']=result['question_max']
+        elif result['max_attr']==state['max_attr']:
+            if state['question_max'] is None or result['question_max'].id<state['question_max'].id:
+                state['question_max']=result['question_max']
     
     INORDER_THREE_WALK_GENERIC(tree,tree.root,max_generic_aux,state,f,*args,**kwargs)
     return state
+
 
 def MIN_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
     state={
@@ -210,6 +214,10 @@ def MIN_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
         if result['min_attr']<state['min_attr']:
             state['min_attr']=result['min_attr']
             state['question_min']=result['question_min']
+
+        elif result['min_attr']==state['min_attr']:
+            if state['question_min']is None or result['question_min'].id<state['question_min'].id:
+                state['question_min']=result['question_min']
     
     INORDER_THREE_WALK_GENERIC(tree,tree.root,min_generic_aux,state,f,*args,**kwargs)
     return state
