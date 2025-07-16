@@ -23,7 +23,10 @@ class Question:
     def calculate_opinion_median(self):
         ith=self.respondents.root.size//2
         x=rbt.OS_SELECT(self.respondents.root,ith)
-        return {'max_attr':getattr(x.object,'opinion')}
+        return {
+            'max_attr':getattr(x.object,'opinion'),
+            'question_max':self
+            }                   
     
 
     def calculate_opinion_mode_consensus(self,attr):
@@ -53,8 +56,8 @@ class Question:
         INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, contar_opinion)
         results= (modes[0],count[0]/self.respondents.root.size * 100)
 
-        if attr=='mode': return {'max_attr':results[0]} 
-        else: return {'max_attr':results[1]}
+        if attr=='mode': return {'max_attr':results[0],'question_max':self} 
+        else: return {'max_attr':results[1],'question_max':self}
 
 #funcion para hallar el promedio de opiniones
 def calculate_average_opinion(self):
@@ -71,7 +74,7 @@ def calculate_average_opinion(self):
 
     if count == 0:
         return 0
-    return {'max_attr':total_opinion / count}
+    return {'max_attr':total_opinion / count,'question_max':self}
 
 """
 funcion para hallar el mayor consenso

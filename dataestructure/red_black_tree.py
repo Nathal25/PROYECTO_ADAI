@@ -194,7 +194,7 @@ def MAX_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
         result=f(node,*args,**kwargs)
         if result['max_attr']>state['max_attr']:
             state['max_attr']=result['max_attr']
-            state['question_max']=node.object
+            state['question_max']=result['question_max']
     
     INORDER_THREE_WALK_GENERIC(tree,tree.root,max_generic_aux,state,f,*args,**kwargs)
     return state
@@ -209,7 +209,7 @@ def MIN_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
         result=f(node,*args,**kwargs)
         if result['min_attr']<state['min_attr']:
             state['min_attr']=result['min_attr']
-            state['question_min']=node.object
+            state['question_min']=result['question_min']
     
     INORDER_THREE_WALK_GENERIC(tree,tree.root,min_generic_aux,state,f,*args,**kwargs)
     return state

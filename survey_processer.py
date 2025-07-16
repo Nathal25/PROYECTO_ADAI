@@ -116,13 +116,18 @@ print(f"Mode opinions question 2 {mode_qs_2}")
 print(f"Mode opinions question 3 {mode_qs_3}")
 
 max_mode_question = survey_1.max_mode_question()
+max_mode_question_topic_1=t_1.max_mode_question()
+max_mode_question_topic_2=t_2.max_mode_question()
 print(f"valor de la maxima mode es: {max_mode_question['max_attr']}")
 print(f"La pregunta con mayor mode es la que tiene id: {max_mode_question['question_max'].id}")
+print(f"La pregunta con mayor mode desde topic es la que tiene id:{max_mode_question_topic_1['question_max'].id}")
+print(f"La pregunta con mayor mode desde topic es la que tiene id:{max_mode_question_topic_2['question_max'].id}")
 
 
-max_consensus_q = survey_1.max_consensus_question()
-print(max_consensus_q)
-print(max_consensus_q['question_max'].id)
+
+# max_consensus_q = survey_1.max_consensus_question()
+# print(max_consensus_q)
+# print(max_consensus_q['question_max'].id)
 # print(getattr(qs_1.respondents.root.object,'name'))
 
 # avg=qs_1.calculate_opinion_average()
