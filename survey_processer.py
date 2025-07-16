@@ -103,26 +103,26 @@ print(f"Median opinions question 2 {median_qs_2}")
 print(f"Median opinions question 3 {median_qs_3}")
 
 max_media_question = survey_1.max_median_question()
-print(f"valor de la maxima mediana es: {max_media_question["max_median"]}")
-print(f"La pregunta con mayor mediana es la que tiene id: {max_media_question["question_max"].id}")
+print(f"valor de la maxima mediana es: {max_media_question['max_attr']}")
+print(f"La pregunta con mayor mediana es la que tiene id: {max_media_question['question_max'].id}")
 
 
-mode_qs_1 = qs_1.calculate_opinion_mode()
-mode_qs_2 = qs_2.calculate_opinion_mode()
-mode_qs_3 = qs_3.calculate_opinion_mode()
+mode_qs_1 = qs_1.calculate_opinion_mode_consensus('mode')
+mode_qs_2 = qs_2.calculate_opinion_mode_consensus('mode')
+mode_qs_3 = qs_3.calculate_opinion_mode_consensus('mode')
 
 print(f"Mode opinions question 1 {mode_qs_1}")
 print(f"Mode opinions question 2 {mode_qs_2}")
 print(f"Mode opinions question 3 {mode_qs_3}")
 
 max_mode_question = survey_1.max_mode_question()
-print(f"valor de la maxima mode es: {max_mode_question["max_mode"]}")
-print(f"La pregunta con mayor mode es la que tiene id: {max_mode_question["question_max"].id}")
+print(f"valor de la maxima mode es: {max_mode_question['max_attr']}")
+print(f"La pregunta con mayor mode es la que tiene id: {max_mode_question['question_max'].id}")
 
 
-max_consensus_question = survey_1.max_mode_question_consensus()
-print(max_consensus_question)
-print(max_consensus_question["question_max"].id)
+max_consensus_q = survey_1.max_consensus_question()
+print(max_consensus_q)
+print(max_consensus_q['question_max'].id)
 # print(getattr(qs_1.respondents.root.object,'name'))
 
 # avg=qs_1.calculate_opinion_average()

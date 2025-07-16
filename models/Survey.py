@@ -38,57 +38,38 @@ class Survey:
 
         rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,print_node)
 
+    
     def max_median_question(self):
-        state={
-            "max_median":-math.inf,
-            "question_max":None
-            }
-        def max_median_question_by_topic(node_topic:rbt.Node,state:dict):
-            median= node_topic.object.max_median_question()
-            if median['max_median'] > state['max_median']:
-                state['max_median']=median['max_median']
-                state['question_max']=median['question_max']
-        rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,max_median_question_by_topic,state)
-        return state
+        return rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.max_median_question()
+
+            )
+    
+
+    def max_consensus_question(self):
+        return rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.max_consensus_question()
+
+            )
     
     def max_mode_question(self):
-        state={
-            "max_mode":-math.inf,
-            "question_max":None
-            }
-        def max_mode_question_by_topic(node_topic:rbt.Node,state:dict):
-            mode= node_topic.object.max_mode_question()
-            if mode['max_mode'] > state['max_mode']:
-                state['max_mode']=mode['max_mode']
-                state['question_max']=mode['question_max']
-        rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,max_mode_question_by_topic,state)
-        return state
+        return rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.max_mode_question()
+
+            )
     
-    def max_mode_question_consensus(self):
-        state={
-            "max_consensus":-math.inf,
-            "question_max":None
-            }
-        def max_consesus_question_by_topic(node_topic:rbt.Node,state:dict):
-            consensus = node_topic.object.max_consensus_question()
-            if consensus['max_consensus'] > state['max_consensus']:
-                state['max_consensus']=consensus['max_consensus']
-                state['question_max']=consensus['question_max']
-        rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,max_consesus_question_by_topic,state)
-        return state
+    
     
     def max_opinion_avg_question(self):
-        state={
-            "max_opinion_avg":-math.inf,
-            "question_max":None
-            }
-        def max_opinion_avg_question_by_topic(node_topic:rbt.Node,state:dict):
-            opinion_avg = node_topic.object.max_opinion_avg_question()
-            if opinion_avg['max_opinion_avg'] > state['max_opinion_avg']:
-                state['max_opinion_avg']=opinion_avg['max_opinion_avg']
-                state['question_max']=opinion_avg['question_max']
-        rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,max_opinion_avg_question_by_topic,state)
-        return state
+        
+        result= rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.max_opinion_avg_question()
+        )
+        return result['question_max']
 
     
 

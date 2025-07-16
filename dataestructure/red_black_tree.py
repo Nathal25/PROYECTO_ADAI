@@ -1,4 +1,5 @@
-from typing import Callable
+from typing import Callable,Any
+import math
 
 RED='RED'
 BLACK='BLACK'
@@ -182,6 +183,21 @@ def THREE_PREDECESSOR(T:RBTree,x:Node):
         x=y
         y=y.parent
     return y
+
+def MAX_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
+    state={
+        'question_max':None,
+        'max_attr':-math.inf
+    }
+        
+    def max_generic_aux(node:Node,state:dict[str,Any],f:Callable,*args,**kwargs):
+        result=f(node,*args,**kwargs)
+        if result['max_attr']>state['max_attr']:
+            state['max_attr']=result['max_attr']
+            state['question_max']=node.object
+    
+    INORDER_THREE_WALK_GENERIC(tree,tree.root,max_generic_aux,state,f,*args,**kwargs)
+    return state
 
 #statistics orders
 
