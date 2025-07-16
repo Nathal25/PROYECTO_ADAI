@@ -59,22 +59,38 @@ class Question:
         if attr=='mode': return {'max_attr':results[0],'question_max':self} 
         else: return {'max_attr':results[1],'question_max':self}
 
-#funcion para hallar el promedio de opiniones
-def calculate_average_opinion(self):
-    total_opinion = 0
-    count = 0
+    #funcion para hallar el promedio de opiniones
+    def calculate_average_opinion(self):
+        total_opinion = 0
+        count = 0
 
-    def sumar_opinion(node):
-        nonlocal total_opinion, count
-        opinion = getattr(node.object, 'opinion')
-        total_opinion += opinion
-        count += 1
+        def sumar_opinion(node):
+            nonlocal total_opinion, count
+            opinion = getattr(node.object, 'opinion')
+            total_opinion += opinion
+            count += 1
 
-    INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, sumar_opinion)
+        INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, sumar_opinion)
 
-    if count == 0:
-        return 0
-    return {'max_attr':total_opinion / count,'question_max':self}
+        if count == 0:
+            return 0
+        return {'max_attr':total_opinion / count,'question_max':self}
+
+    def calculate_opinion_extremism(self):
+        count=0
+        def extremism_aux(node):
+            nonlocal count
+            opinion=node.object.opinion
+            if opinion==10 or opinion==0:
+                count+=1
+
+        INORDER_THREE_WALK_GENERIC(self.respondents,self.respondents.root,extremism_aux)
+
+        return {'max_attr':count/self.respondents.root.size,'question_max':self}   
+            
+
+
+
 
 """
 funcion para hallar el mayor consenso

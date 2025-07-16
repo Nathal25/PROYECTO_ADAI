@@ -123,7 +123,9 @@ print(f"La pregunta con mayor mode es la que tiene id: {max_mode_question['quest
 print(f"La pregunta con mayor mode desde topic es la que tiene id:{max_mode_question_topic_1['question_max'].id}")
 print(f"La pregunta con mayor mode desde topic es la que tiene id:{max_mode_question_topic_2['question_max'].id}")
 
+max_extremism=survey_1.max_opinion_extremism()
 
+print(f"la pregunta con mayor extremismo es : {max_extremism['question_max'].id}")
 
 # max_consensus_q = survey_1.max_consensus_question()
 # print(max_consensus_q)

@@ -82,6 +82,13 @@ class Topic:
             lambda node: node.object.calculate_average_opinion()
 
             )
+    
+    def max_opinion_extremism(self):
+        return rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.questions,
+            lambda node: node.object.calculate_opinion_extremism()
+
+            )
 
     
     def num_respondents(self):

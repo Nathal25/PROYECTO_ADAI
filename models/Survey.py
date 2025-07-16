@@ -97,6 +97,14 @@ class Survey:
             self.topics,
             lambda node: node.object.min_opinion_avg_question()
         )
+    
+    def max_opinion_extremism(self):
+        return rbt.MAX_GENERIC_QUESTION_ATTR(
+            self.topics,
+            lambda node: node.object.max_opinion_extremism()
+
+            )
+
         
 
 
