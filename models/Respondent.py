@@ -8,5 +8,4 @@ class Respondent:
         self.expertise = expertise
         self.opinion = opinion
 
-    def print_respondent(self):
-        print(f'id:{self.id}\nname:{self.name}\nexperience:{self.expertise}\nopinion:{self.opinion}')
+ 

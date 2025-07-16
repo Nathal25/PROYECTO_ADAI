@@ -2,7 +2,7 @@
 # Clase tema
 
 class Topic:
-    def __init__(self,questions,id):
+    def __init__(self,id):
         self.id = id
         self.questions = []
         
@@ -15,5 +15,3 @@ class Topic:
     # Calculo el promedio de los promedios de experticia de las preguntas
     
     # Total de encuestados de todas sus preguntas
-    
-    # Ordenar preguntas

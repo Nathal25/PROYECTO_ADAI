@@ -13,6 +13,26 @@ class Question:
     def add_respondent(self, respondent):
         self.respondents.append(respondent)
 
+
+    # Ordenar a través de opinion y en caso de empate mayor nivel de experticia
+    def ordenar_respondents(self):
+        lista = ListStructure(self.respondents)
+    
+        def compare(a, b):
+            if a.opinion > b.opinion:
+                return True
+            elif a.opinion == b.opinion:
+                return a.expertise > b.expertise
+            return False
+
+        self.respondents = lista.mergeSort(lista.list, compare)
+        
+        
+    def imprimir_respondents(self):
+        print(f"Encuestados de {self.id}:")
+        for r in self.respondents:
+            print(f"ID: {r.id}, Nombre: {r.name}, Opinion: {r.opinion}, Experticia: {r.expertise}")
+    
     # Calcula el promedio de opiniones
     def average_opinion(self):
         total = 0
@@ -39,9 +59,10 @@ class Question:
     def median_opiniones(self):
         opiniones = [r.opinion for r in self.respondents]
         lista = ListStructure(opiniones)
-        lista.list = lista.mergeSort(lista.list) 
+        lista.mergeSort(lista.list)
         
-        medianaOrdenada = lista.get() # Aunque por el merge estan en orden descendete no afecta al calculo
+        medianaOrdenada = lista.get()[::-1] # lo ordena ascendentemente xd
+      
         n = len(medianaOrdenada)
         if n % 2 == 0:
             return (medianaOrdenada[n//2-1] + medianaOrdenada[n//2] )/2
