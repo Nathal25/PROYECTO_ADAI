@@ -3,6 +3,7 @@ from dataestructure.red_black_tree import INORDER_THREE_WALK_GENERIC, INORDER_TH
 class Question:
     def __init__(self,id):
         self.id=id
+        self.topic_id=None
         self.respondents= rbt.RBTree()
 
     def insert_respondent(self,respondent):
@@ -11,13 +12,16 @@ class Question:
             keys = (respondent.opinion,respondent.experience,respondent.id)
             ))
         
-    def print_info(self,attr):
-        def print_respondents(x:rbt.Node):
-            print(getattr(x.object,attr))
+    def print_info(self):
+        string=""
+        def add_string(node):
+            nonlocal string
+            string+=str(node.object.id)+","
+        
+        rbt.INORDER_THREE_WALK_GENERIC_REVERSE(self.respondents,self.respondents.root,add_string)
+        
+        print(f"[{self.calculate_average_opinion()}] Pregunta{self.topic_id}.{self.id}:({string.rstrip(',')})")
 
-        print(f"id:{self.id}")
-        print("respondents:")
-        rbt.INORDER_THREE_WALK_GENERIC(self.respondents,self.respondents.root,print_respondents)
 
    
     def calculate_opinion_median(self):

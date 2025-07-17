@@ -17,12 +17,12 @@ class Topic:
             )
         ))
     
-    def print_questions(self):
-        def print_node(node:rbt.Node):
-            print(getattr(node.object,'id'))
-
-        rbt.INORDER_THREE_WALK_GENERIC(self.questions,self.questions.root,print_node)
-    
+    def print_info(self):
+        
+        avg_op_questions= rbt.TREE_AVERAGE_ATTR(self.questions,self.questions.root,
+                                                lambda node_q:node_q.object.calculate_average_opinion()
+                                                )
+        print(f"[{avg_op_questions}] Tema {self.id}")
     
     
     def max_median_question(self):

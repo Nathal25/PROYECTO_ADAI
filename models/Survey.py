@@ -38,6 +38,26 @@ class Survey:
             print(getattr(node.object,'id'))
 
         rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,print_node)
+    
+    
+    def print_info(self):
+
+        def print_expected_out(node_t:rbt.Node):
+            topic=node_t.object
+            topic.print_info()
+            rbt.INORDER_THREE_WALK_GENERIC_REVERSE(
+                topic.questions,
+                topic.questions.root,
+                lambda node_q: node_q.object.print_info()
+                )
+        
+        rbt.INORDER_THREE_WALK_GENERIC_REVERSE(
+            self.topics,
+            self.topics.root,
+            print_expected_out
+        )
+                                               
+                                               
 
     
     def max_median_question(self):
