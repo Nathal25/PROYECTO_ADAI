@@ -1,5 +1,5 @@
 import dataestructure.red_black_tree as rbt
-from dataestructure.red_black_tree import INORDER_THREE_WALK_GENERIC
+from dataestructure.red_black_tree import INORDER_THREE_WALK_GENERIC, INORDER_THREE_WALK_GENERIC_REVERSE
 class Question:
     def __init__(self,id):
         self.id=id
@@ -87,6 +87,8 @@ class Question:
         INORDER_THREE_WALK_GENERIC(self.respondents,self.respondents.root,extremism_aux)
 
         return {'max_attr':count/self.respondents.root.size,'question_max':self}   
+    
+    
             
 
 

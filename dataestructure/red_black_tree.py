@@ -130,11 +130,13 @@ def INORDER_THREE_WALK_GENERIC(T: RBTree, x: Node, body: Callable, *args, **kwar
         body(x, *args, **kwargs)  
         INORDER_THREE_WALK_GENERIC(T, x.right, body, *args, **kwargs)
 
-def INORDER_THREE_WALK_F(T: RBTree, x: Node, func):
+def INORDER_THREE_WALK_GENERIC_REVERSE(T: RBTree, x: Node, body: Callable, *args, **kwargs):
     if x != T.nil:
-        INORDER_THREE_WALK_F(T, x.left, func)
-        func(x)  
-        INORDER_THREE_WALK_F(T, x.right, func)
+        INORDER_THREE_WALK_GENERIC_REVERSE(T, x.right, body, *args, **kwargs)
+        body(x, *args, **kwargs)  
+        INORDER_THREE_WALK_GENERIC_REVERSE(T, x.left, body, *args, **kwargs)
+
+
 
 def TREE_SEARCH(T:RBTree,x:Node,k:object):
     while x!=T.nil and k!=x.key:

@@ -104,6 +104,30 @@ class Survey:
             lambda node: node.object.max_opinion_extremism()
 
             )
+    
+    def print_list_respondents(self):
+        aux_tree=rbt.RBTree()
+
+        rbt.INORDER_THREE_WALK_GENERIC(
+            self.topics,
+            self.topics.root,
+            lambda node_topic: rbt.INORDER_THREE_WALK_GENERIC(
+                node_topic.object.questions,
+                node_topic.object.questions.root,
+                lambda node_question: rbt.INORDER_THREE_WALK_GENERIC(
+                    node_question.object.respondents,
+                    node_question.object.respondents.root,
+                    lambda node_respondent: rbt.RB_INSERT(aux_tree,node_respondent)
+
+                )
+            
+            )
+        )
+
+        rbt.INORDER_THREE_WALK_GENERIC_REVERSE(aux_tree,aux_tree.root,
+                                               lambda node: print(
+                                                   f'id: {node.object.id},name:{node.object.name}, opinion: {node.object.opinion},expertice: {node.object.experiencia}'
+                                               ))
 
         
 
