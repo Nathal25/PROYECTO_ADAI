@@ -73,7 +73,7 @@ class Question:
         INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, sumar_opinion)
 
         if count == 0:
-            return 0
+            return {'max_attr':0,'question_max':self}
         return {'max_attr':total_opinion / count,'question_max':self}
 
     def calculate_opinion_extremism(self):
