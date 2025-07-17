@@ -102,25 +102,20 @@ class Pregunta:
 
     # Ordenar encuestados 
     def ordenar_encuestados(self):
-        def comparar(p1, p2):
-            if p1.promedio_opinion() > p2.promedio_opinion():
-                 return True
-            elif p1.promedio_opinion() < p2.promedio_opinion():
+        def comparar(e1, e2):
+            if e1.opinion > e2.opinion:
+                return True
+            elif e1.opinion < e2.opinion:
                 return False
             else:
-        # Empate en promedio de opiniones
-                if p1.promedio_experticia() > p2.promedio_experticia():
+                if e1.experticia > e2.experticia:
                     return True
-                elif p1.promedio_experticia() < p2.promedio_experticia():
+                elif e1.experticia < e2.experticia:
                     return False
                 else:
-                # Empate en experticia también
-                    if p1.total_encuestados() > p2.total_encuestados():
-                        return True
-                    else:
-                        return False
-
+                    return False  # En caso de empate total, no se cambia el orden
 
         self.encuestados = merge_sort(self.encuestados, comparar)
+
 
   

@@ -55,7 +55,7 @@ for eid in [2,10]:
 p1_2 = Pregunta("Pregunta 1.2")
 for eid in [1, 9, 12, 6]:
     p1_2.agregar_encuestado(encuestados[eid])
-    
+
 p1_3 = Pregunta("Pregunta 1.3")
 for eid in [20, 15, 30, 32]:
     p1_3.agregar_encuestado(encuestados[eid])
@@ -122,10 +122,11 @@ temas = [tema1, tema2, tema3]
 temas = merge_sort(temas, Tema.comparar_temas)
 for t in temas:
     t.mostrar_detalle()
+    
 
 # Lista de encuestados ordenados por experticia y luego por id
 todos_encuestados = list(encuestados.values())
-todos_ordenados = merge_sort(todos_encuestados, Encuestado.comparar_encuestados)
+todos_ordenados = merge_sort(todos_encuestados, Encuestado.comparar_por_opinion)
 
 print("Lista de encuestados:")
 print("{" + ", ".join(str(e.id) for e in todos_ordenados) + "}")

@@ -1,5 +1,5 @@
 from AlgoritmoOrd.merge_sort import merge_sort
-
+from Clases.Encuestado import Encuestado
 class Tema:
     def __init__(self, nombre):
         self.nombre = nombre  # nombre del tema
@@ -63,9 +63,15 @@ class Tema:
                 return t1.total_encuestados_tema() > t2.total_encuestados_tema()
 
     # Mostrar resultados
+
+
+
+    # Mostrar resultados
     def mostrar_detalle(self):
         self.ordenar_preguntas() 
         print(f"[{round(self.promedio_tema(), 2)}] {self.nombre}:")
         for p in self.preguntas:
-            enc_ids = ', '.join(str(e.id) for e in p.encuestados)
+            # Ordenar los encuestados por opinión, experticia y ID
+            encuestados_ordenados = merge_sort(p.encuestados, Encuestado.comparar_por_opinion)
+            enc_ids = ', '.join(str(e.id) for e in encuestados_ordenados)
             print(f"[{round(p.promedio_opinion(), 2)}] {p.num_pregunta}: ({enc_ids})")
