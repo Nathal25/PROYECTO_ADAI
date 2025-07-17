@@ -6,6 +6,7 @@ class Survey:
     def __init__(self,id):
         self.name=id
         self.topics=rbt.RBTree()
+        
 
     def insert_topic(self,topic:tp.Topic):
         rbt.RB_INSERT(self.topics,rbt.Node(
@@ -117,7 +118,10 @@ class Survey:
                 lambda node_question: rbt.INORDER_THREE_WALK_GENERIC(
                     node_question.object.respondents,
                     node_question.object.respondents.root,
-                    lambda node_respondent: rbt.RB_INSERT(aux_tree,node_respondent)
+                    lambda node_respondent: rbt.RB_INSERT(aux_tree,rbt.Node(
+                        data_object=node_respondent.object,
+                        keys=(node_respondent.object.experience,node_respondent.object.id)
+                    ))
 
                 )
             
@@ -126,7 +130,7 @@ class Survey:
 
         rbt.INORDER_THREE_WALK_GENERIC_REVERSE(aux_tree,aux_tree.root,
                                                lambda node: print(
-                                                   f'id: {node.object.id},name:{node.object.name}, opinion: {node.object.opinion},expertice: {node.object.experiencia}'
+                                                   f'id: {node.object.id},name:{node.object.name}, opinion: {node.object.opinion},expertice: {node.object.experience}'
                                                ))
 
         
