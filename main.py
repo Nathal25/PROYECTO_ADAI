@@ -3,44 +3,18 @@ from Clases.Pregunta import Pregunta
 from Clases.Tema import Tema
 from Clases.Encuesta import Encuesta
 from AlgoritmoOrd.merge_sort import merge_sort
-
+from controller.controlador import leer_encuestados_desde_csv
 # Crear encuestados
- # Ojo (ID ,Nombre, Experticia, Opinion)
+# (ID ,Nombre, Experticia, Opinion)
+from Clases.Encuestado import Encuestado
+# Mostrar lista ordenada
+def imprimir_encuestados(encuestados):
+    for e in encuestados:
+        print(f"ID: {e.id}, Nombre: {e.nombre}, Experticia: {e.experticia}, Opinión: {e.opinion}")
 
-encuestados = {
-    1: Encuestado(1, "Sofia García", 1, 6),
-    2: Encuestado(2, "Alejandro Torres", 7, 10),
-    3: Encuestado(3, "Valentina Rodriguez", 9, 0),
-    4: Encuestado(4, "Juan López", 10, 1),
-    5: Encuestado(5, "Martina Martinez", 7, 0),
-    6: Encuestado(6, "Sebastián Pérez", 8, 9),
-    7: Encuestado(7, "Camila Fernández", 2, 7),
-    8: Encuestado(8, "Mateo González", 4, 7),
-    9: Encuestado(9, "Isabella Díaz", 7, 5),
-    10: Encuestado(10, "Daniel Ruiz", 2, 9),
-    11: Encuestado(11, "Luciana Sánchez", 1, 7),
-    12: Encuestado(12, "Lucas Vásquez", 6, 8),
-    13: Encuestado(13, "Sara", 8, 1),
-    14: Encuestado(14, "Diego", 6, 3),
-    15: Encuestado(15, "Juan", 9, 7),
-    16: Encuestado(16, "Mari", 3, 10),
-    17: Encuestado(17, "Alex", 3, 5),
-    18: Encuestado(18, "Anna", 4, 8),
-    19: Encuestado(19, "Nathalia", 4, 10),
-    20: Encuestado(20, "Santiago", 4, 2),
-    21: Encuestado(21, "Nicole", 4,5),
-    22: Encuestado(22, "Pedro", 4,1),
-    23: Encuestado(23, "Yineth", 8, 5),
-    24: Encuestado(24, "Leonardo", 6, 9),
-    25: Encuestado(25, "Amariles", 9, 7),
-    26: Encuestado(26, "Ortiz", 3, 10),
-    27: Encuestado(27, "Reyes", 3, 4),
-    28: Encuestado(28, "Carlos", 4, 6),
-    29: Encuestado(29, "Oscar", 4, 3),
-    30: Encuestado(30, "Narvaez", 4, 2),
-    31: Encuestado(19, "Sam", 4,5),
-    32: Encuestado(20, "Juanita", 4,1)
-}
+
+ruta_csv = "encuestados.csv"
+encuestados = leer_encuestados_desde_csv(ruta_csv)
 
 # Crear temas y preguntas
 tema1 = Tema("Tema 1")
