@@ -51,17 +51,19 @@ class Survey:
         rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,max_median_question_by_topic,state)
         return state
     
-    def max_mode_question(self):
+    def max_mode_and_consensus_question(self):
         state={
             "max_mode":-math.inf,
-            "question_max":None
+            "question_max":None,
+            "max_consensus": -math.inf
             }
-        def max_mode_question_by_topic(node_topic:rbt.Node,state:dict):
-            mode= node_topic.object.max_mode_question()
-            if mode['max_mode'] > state['max_mode']:
-                state['max_mode']=mode['max_mode']
-                state['question_max']=mode['question_max']
-        rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,max_mode_question_by_topic,state)
+        def max_mode_and_consensus_question_by_topic(node_topic:rbt.Node,state:dict):
+            data = node_topic.object.max_mode_and_consensus_question()
+            if data['max_mode'] > state['max_mode']:
+                state['max_mode'] = data['max_mode']
+                state['max_consensus'] = data['max_consensus']
+                state['question_max']=data['question_max']
+        rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,max_mode_and_consensus_question_by_topic,state)
         return state
     
     def max_mode_question_consensus(self):

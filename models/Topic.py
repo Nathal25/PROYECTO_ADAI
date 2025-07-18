@@ -42,20 +42,22 @@ class Topic:
         return state
         
 
-    def max_mode_question(self):
+    def max_mode_and_consensus_question(self):
         state={
             'question_max':None,
-            'max_mode':-math.inf
+            'max_mode':-math.inf,
+            'max_consensus':-math.inf
         }
         
-        def max_question(node:rbt.Node,state:dict[str,any]):
-            mode=getattr(node.object,'calculate_opinion_mode')()
+        def max_and_consensus_question(node:rbt.Node,state:dict[str,any]):
+            mode, consensus =getattr(node.object,'calculate_opinion_mode_and_consensus')()
             if mode>state['max_mode']:
                 state['max_mode']=mode
+                state['max_consensus']=consensus
                 state['question_max']=node.object
 
             
-        rbt.INORDER_THREE_WALK_GENERIC(self.questions,self.questions.root,max_question,state)
+        rbt.INORDER_THREE_WALK_GENERIC(self.questions,self.questions.root,max_and_consensus_question,state)
         return state
     
     def max_consensus_question(self):
