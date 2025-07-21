@@ -16,3 +16,15 @@ class Encuestado:
             return False
         else:
             return e1.id < e2.id
+    @staticmethod
+    def comparar_por_experticia(e1, e2):
+        if e1.experticia > e2.experticia:
+            return True
+        elif e1.experticia < e2.experticia:
+            return False
+        elif e1.opinion > e2.opinion:
+            return True
+        elif e1.opinion < e2.opinion:
+            return False
+        else:
+            return e1.id < e2.id
