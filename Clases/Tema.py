@@ -49,6 +49,7 @@ class Tema:
         self.preguntas = merge_sort(self.preguntas, comparar)
             
     # Ordenar temas con merge_sort
+    @staticmethod
     def comparar_temas(t1, t2):
         if t1.promedio_tema() > t2.promedio_tema():
             return True
