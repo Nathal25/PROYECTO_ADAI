@@ -34,10 +34,10 @@ Lista de Encuestados:
 
 Resultados:
     Pregunta con mayor promedio de opinion:[7.00] Pregunta: 1.1
-    Pregunta con menor promedio de opinion:[4.67] Pregunta: 3.1
+    Pregunta con menor promedio de opinion:[4.67] Pregunta: 2.2
     Pregunta con mayor mediana de opinion:[7.00] Pregunta: 2.1
     Pregunta con menor mediana de opinion:[0.00] Pregunta: 2.2
     Pregunta con mayor valor de moda de opinion:[7.00] Pregunta: 2.1
-    Pregunta con menor valor de moda de opinion:[0.00] Pregunta: 3.2
+    Pregunta con menor valor de moda de opinion:[0.00] Pregunta: 2.2
     Pregunta con mayor valor de extremismo:[0.67] Pregunta: 2.2
-    Pregunta con mayor valor de concenso:[0.33] Pregunta: 3.1
+    Pregunta con mayor valor de concenso:[0.33] Pregunta: 1.1
