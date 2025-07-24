@@ -161,7 +161,7 @@ class Survey:
 
         def add_string(node:rbt.Node):
             nonlocal string
-            new_string=f'   id: {node.object.id},name:{node.object.name}, opinion: {node.object.opinion},expertice: {node.object.experience}\n'
+            new_string=node.object.get_info()
             string+=new_string
             
 
