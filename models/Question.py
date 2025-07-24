@@ -24,13 +24,29 @@ class Question:
 
 
    
+    # def calculate_opinion_median(self):
+    #     ith=self.respondents.root.size//2
+    #     x=rbt.OS_SELECT(self.respondents.root,ith)
+    #     return {
+    #         'attr':getattr(x.object,'opinion'),
+    #         'question':self
+    #         } 
+
     def calculate_opinion_median(self):
-        ith=self.respondents.root.size//2
-        x=rbt.OS_SELECT(self.respondents.root,ith)
+        size = self.respondents.root.size
+        if size == 0:
+            return None  # Handle empty tree case
+        if size % 2 == 0:
+            # Even number of respondents, select the lower of the two middle nodes
+            ith = size // 2
+        else:
+            # Odd number of respondents, select the middle node
+            ith = (size + 1) // 2
+        x = rbt.OS_SELECT(self.respondents.root, ith)
         return {
-            'attr':getattr(x.object,'opinion'),
-            'question':self
-            }                   
+            'attr': getattr(x.object, 'opinion'),
+            'question': self
+        }                  
     
 
     def calculate_opinion_mode_consensus(self,attr):
