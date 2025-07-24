@@ -2,7 +2,7 @@ from controller.controller2 import Controller
 
 string_return=''
 
-controller=Controller(2,2,'tests/inboundtests/Test1.txt')
+controller=Controller(2,2,'tests/inboundtests/Test3.txt')
 
 controller.load_data_and_validate()
 
@@ -34,6 +34,6 @@ string_return+=f'    Pregunta con menor valor de moda de opinion:[{min_mode["att
 string_return+=f'    Pregunta con mayor valor de extremismo:[{max_extremism["attr"]:.2f}] Pregunta: {max_extremism["question"].topic_id}.{max_extremism["question"].id}\n'
 string_return+=f'    Pregunta con mayor valor de concenso:[{max_concesus["attr"]:.2f}] Pregunta: {max_concesus["question"].topic_id}.{max_concesus["question"].id}\n'
 
-f=open("tests/outboundtests/OutTest1.txt","a",encoding='utf-8')
+f=open("tests/outboundtests/OutTest3.txt","a",encoding='utf-8')
 f.write(string_return)
 f.close()
