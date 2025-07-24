@@ -74,7 +74,7 @@ class Question:
             prev[0] = opinion
 
         INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, contar_opinion)
-        results= (modes[0],count[0]/self.respondents.root.size)
+        results= (modes[0],max_count[0]/self.respondents.root.size)
 
         if attr=='mode': return {'attr':results[0],'question':self} 
         else: return {'attr':results[1],'question':self}

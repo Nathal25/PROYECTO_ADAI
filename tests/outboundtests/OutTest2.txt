@@ -40,4 +40,4 @@ Resultados:
     Pregunta con mayor valor de moda de opinion:[7.00] Pregunta: 2.1
     Pregunta con menor valor de moda de opinion:[0.00] Pregunta: 2.2
     Pregunta con mayor valor de extremismo:[0.67] Pregunta: 2.2
-    Pregunta con mayor valor de concenso:[0.33] Pregunta: 1.1
+    Pregunta con mayor valor de concenso:[0.67] Pregunta: 1.1
