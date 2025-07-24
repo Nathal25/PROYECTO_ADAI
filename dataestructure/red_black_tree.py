@@ -138,23 +138,7 @@ def INORDER_THREE_WALK_GENERIC_REVERSE(T: RBTree, x: Node, body: Callable, *args
 
 
 
-def TREE_SEARCH(T:RBTree,x:Node,k:object):
-    while x!=T.nil and k!=x.key:
-        if k<x.key:
-            x=x.left
-        else:
-            x=x.right
-    return x
 
-def THREE_MINIMUM(T:RBTree,x:Node):
-    while x.left!=T.nil:
-        x=x.left
-    return x
-
-def THREE_MAXIMUM(T:RBTree,x:Node):
-    while x.right!=T.nil:
-        x=x.right
-    return x
 
 def TREE_AVERAGE_ATTR(T:RBTree,x:Node,f:Callable,*args,**kwargs):
     
@@ -168,38 +152,21 @@ def TREE_AVERAGE_ATTR(T:RBTree,x:Node,f:Callable,*args,**kwargs):
         
     return recursive_aux(x)/x.size if x.size > 0 else 0.0 
 
-def THREE_SUCCESSOR(T:RBTree,x:Node):
-    if x.right!=T.nil:
-        return THREE_MINIMUM(T,x.right)
-    y=x.parent
-    while y != T.nil and x==y.right:
-        x=y
-        y=y.parent
-    return y
-
-def THREE_PREDECESSOR(T:RBTree,x:Node):
-    if x.left!=T.nil:
-        return THREE_MAXIMUM(T,x.left)
-    y=x.parent
-    while y != T.nil and x==y.left:
-        x=y
-        y=y.parent
-    return y
 
 def MAX_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
     state={
-        'question_max':None,
-        'max_attr':-math.inf
+        'question':None,
+        'attr':-math.inf
     }
         
     def max_generic_aux(node:Node,state:dict[str,Any],f:Callable,*args,**kwargs):
         result=f(node,*args,**kwargs)
-        if result['max_attr']>state['max_attr']:
-            state['max_attr']=result['max_attr']
-            state['question_max']=result['question_max']
-        elif result['max_attr']==state['max_attr']:
-            if state['question_max'] is None or result['question_max'].id<state['question_max'].id:
-                state['question_max']=result['question_max']
+        if result['attr']>state['attr']:
+            state['attr']=result['attr']
+            state['question']=result['question']
+        elif result['attr']==state['attr']:
+            if state['question'] is None or result['question'].id<state['question'].id:
+                state['question']=result['question']
     
     INORDER_THREE_WALK_GENERIC(tree,tree.root,max_generic_aux,state,f,*args,**kwargs)
     return state
@@ -207,19 +174,19 @@ def MAX_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
 
 def MIN_GENERIC_QUESTION_ATTR(tree:RBTree,f:Callable,*args,**kwargs):
     state={
-        'question_min':None,
-        'min_attr':math.inf
+        'question':None,
+        'attr':math.inf
     }
         
     def min_generic_aux(node:Node,state:dict[str,Any],f:Callable,*args,**kwargs):
         result=f(node,*args,**kwargs)
-        if result['min_attr']<state['min_attr']:
-            state['min_attr']=result['min_attr']
-            state['question_min']=result['question_min']
+        if result['attr']<state['attr']:
+            state['attr']=result['attr']
+            state['question']=result['question']
 
-        elif result['min_attr']==state['min_attr']:
-            if state['question_min']is None or result['question_min'].id<state['question_min'].id:
-                state['question_min']=result['question_min']
+        elif result['attr']==state['attr']:
+            if state['question']is None or result['question'].id<state['question'].id:
+                state['question']=result['question']
     
     INORDER_THREE_WALK_GENERIC(tree,tree.root,min_generic_aux,state,f,*args,**kwargs)
     return state
@@ -235,11 +202,3 @@ def OS_SELECT(x:Node,i:int):
     else:
         return OS_SELECT(x.right,i-r)
 
-def OS_RANK(T:RBTree,x:Node):
-    r=x.left.size +1
-    y=x
-    while y!=T.root:
-        if y==y.parent.right:
-            r=r + y.parent.size+1
-        y=y.parent
-    return r

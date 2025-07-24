@@ -40,22 +40,31 @@ class Survey:
         rbt.INORDER_THREE_WALK_GENERIC(self.topics,self.topics.root,print_node)
     
     
-    def print_info(self):
+    def get_info(self):
+        
+        string=''
 
-        def print_expected_out(node_t:rbt.Node):
+        def get_expected_out(node_t:rbt.Node):
+            nonlocal string
             topic=node_t.object
-            topic.print_info()
+            string+=topic.get_info()
+            def add_string(node:rbt.Node):
+                nonlocal string
+                string+=node.object.get_info()
+
             rbt.INORDER_THREE_WALK_GENERIC_REVERSE(
                 topic.questions,
                 topic.questions.root,
-                lambda node_q: node_q.object.print_info()
+                add_string
                 )
         
         rbt.INORDER_THREE_WALK_GENERIC_REVERSE(
             self.topics,
             self.topics.root,
-            print_expected_out
+            get_expected_out
         )
+
+        return string
                                                
                                                
 
@@ -126,7 +135,7 @@ class Survey:
 
             )
     
-    def print_list_respondents(self):
+    def get_list_respondents(self):
         aux_tree=rbt.RBTree()
 
         rbt.INORDER_THREE_WALK_GENERIC(
@@ -148,11 +157,16 @@ class Survey:
             )
         )
 
-        rbt.INORDER_THREE_WALK_GENERIC_REVERSE(aux_tree,aux_tree.root,
-                                               lambda node: print(
-                                                   f'id: {node.object.id},name:{node.object.name}, opinion: {node.object.opinion},expertice: {node.object.experience}'
-                                               ))
+        string=''
 
-        
+        def add_string(node:rbt.Node):
+            nonlocal string
+            new_string=f'   id: {node.object.id},name:{node.object.name}, opinion: {node.object.opinion},expertice: {node.object.experience}\n'
+            string+=new_string
+            
+
+        rbt.INORDER_THREE_WALK_GENERIC_REVERSE(aux_tree,aux_tree.root,add_string)
+
+        return string
 
 

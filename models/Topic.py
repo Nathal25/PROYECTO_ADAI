@@ -17,12 +17,12 @@ class Topic:
             )
         ))
     
-    def print_info(self):
+    def get_info(self):
         
         avg_op_questions= rbt.TREE_AVERAGE_ATTR(self.questions,self.questions.root,
-                                                lambda node_q:node_q.object.calculate_average_opinion()
+                                                lambda node_q:node_q.object.calculate_average_opinion()['attr']
                                                 )
-        print(f"[{avg_op_questions}] Tema {self.id}")
+        return f"[{avg_op_questions:.2f}] Tema {self.id}\n"
     
     
     def max_median_question(self):

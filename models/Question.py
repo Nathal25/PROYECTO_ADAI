@@ -1,9 +1,9 @@
 import dataestructure.red_black_tree as rbt
 from dataestructure.red_black_tree import INORDER_THREE_WALK_GENERIC, INORDER_THREE_WALK_GENERIC_REVERSE
 class Question:
-    def __init__(self,id):
+    def __init__(self,id,topic_id=None):
         self.id=id
-        self.topic_id=None
+        self.topic_id=topic_id
         self.respondents= rbt.RBTree()
 
     def insert_respondent(self,respondent):
@@ -12,7 +12,7 @@ class Question:
             keys = (respondent.opinion,respondent.experience,respondent.id)
             ))
         
-    def print_info(self):
+    def get_info(self):
         string=""
         def add_string(node):
             nonlocal string
@@ -20,7 +20,7 @@ class Question:
         
         rbt.INORDER_THREE_WALK_GENERIC_REVERSE(self.respondents,self.respondents.root,add_string)
         
-        print(f"[{self.calculate_average_opinion()}] Pregunta{self.topic_id}.{self.id}:({string.rstrip(',')})")
+        return f"    [{self.calculate_average_opinion()['attr']:.2f}] Pregunta{self.topic_id}.{self.id}:({string.rstrip(',')})\n"
 
 
    
@@ -28,8 +28,8 @@ class Question:
         ith=self.respondents.root.size//2
         x=rbt.OS_SELECT(self.respondents.root,ith)
         return {
-            'max_attr':getattr(x.object,'opinion'),
-            'question_max':self
+            'attr':getattr(x.object,'opinion'),
+            'question':self
             }                   
     
 
@@ -58,10 +58,10 @@ class Question:
             prev[0] = opinion
 
         INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, contar_opinion)
-        results= (modes[0],count[0]/self.respondents.root.size * 100)
+        results= (modes[0],count[0]/self.respondents.root.size)
 
-        if attr=='mode': return {'max_attr':results[0],'question_max':self} 
-        else: return {'max_attr':results[1],'question_max':self}
+        if attr=='mode': return {'attr':results[0],'question':self} 
+        else: return {'attr':results[1],'question':self}
 
     #funcion para hallar el promedio de opiniones
     def calculate_average_opinion(self):
@@ -77,8 +77,8 @@ class Question:
         INORDER_THREE_WALK_GENERIC(self.respondents, self.respondents.root, sumar_opinion)
 
         if count == 0:
-            return {'max_attr':0,'question_max':self}
-        return {'max_attr':total_opinion / count,'question_max':self}
+            return {'attr':0,'question':self}
+        return {'attr':total_opinion / count,'question':self}
 
     def calculate_opinion_extremism(self):
         count=0
@@ -90,7 +90,7 @@ class Question:
 
         INORDER_THREE_WALK_GENERIC(self.respondents,self.respondents.root,extremism_aux)
 
-        return {'max_attr':count/self.respondents.root.size,'question_max':self}   
+        return {'attr':count/self.respondents.root.size,'question':self}   
     
     
             
