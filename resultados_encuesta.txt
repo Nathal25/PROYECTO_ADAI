@@ -1,35 +1,35 @@
 Resultados de la encuesta:
 
-[6.17] Tema 1:
- [3.33] Pregunta 1.1: (1, 4, 5)
- [9.0] Pregunta 1.2: (10, 11)
+[6.5] Tema 1:
+ [4.5] Pregunta 1.1: (1, 2, 3, 4)
+ [8.5] Pregunta 1.2: (8, 5, 6, 7)
 
-[5.04] Tema 2:
- [5.75] Pregunta 2.1: (2, 12, 6, 7)
- [4.33] Pregunta 2.2: (8, 9, 3)
+[3.25] Tema 2:
+ [1.5] Pregunta 2.1: (9, 10)
+ [5.0] Pregunta 2.2: (11, 12)
 
 Lista de encuestados:
- (8, Nombre:'Irene Parra', Experticia:10, Opinión:5)
- (4, Nombre:'Esteban Cárdenas', Experticia:9, Opinión:3)
- (3, Nombre:'Diana León', Experticia:8, Opinión:2)
- (5, Nombre:'Felipe Romero', Experticia:7, Opinión:1)
- (9, Nombre:'Jorge Silva', Experticia:6, Opinión:6)
- (2, Nombre:'Carlos Gómez', Experticia:6, Opinión:4)
- (1, Nombre:'Ana Ríos', Experticia:5, Opinión:6)
- (6, Nombre:'Gabriela Vélez', Experticia:4, Opinión:9)
- (7, Nombre:'Héctor Morales', Experticia:3, Opinión:7)
- (10, Nombre:'Karen Beltrán', Experticia:2, Opinión:8)
- (12, Nombre:'Mariana Londoño', Experticia:2, Opinión:3)
- (11, Nombre:'Luis Valdez', Experticia:1, Opinión:10)
+ (8, Nombre:'Iván Urrutia', Experticia:10, Opinión:10)
+ (7, Nombre:'Helena Tovar', Experticia:9, Opinión:9)
+ (6, Nombre:'Germán Salazar', Experticia:8, Opinión:8)
+ (5, Nombre:'Fernanda Rojas', Experticia:7, Opinión:7)
+ (4, Nombre:'Ernesto Quintero', Experticia:6, Opinión:6)
+ (12, Nombre:'Mauricio Yáñez', Experticia:6, Opinión:6)
+ (3, Nombre:'Daniela Pineda', Experticia:5, Opinión:5)
+ (2, Nombre:'Camilo Ortega', Experticia:4, Opinión:4)
+ (11, Nombre:'Laura Ximénez', Experticia:4, Opinión:4)
+ (1, Nombre:'Beatriz Naranjo', Experticia:3, Opinión:3)
+ (10, Nombre:'Kevin Wilches', Experticia:2, Opinión:2)
+ (9, Nombre:'Jessica Villa', Experticia:1, Opinión:1)
 
 Resultados:
-  Pregunta con mayor promedio de opinion: [9.0] Pregunta: Pregunta 2.2
-  Pregunta con menor promedio de opinion: [3.33] Pregunta: Pregunta 2.1
-  Pregunta con mayor promedio de experticia: [3.75] Pregunta: Pregunta 1.2
-  Pregunta con menor promedio de experticia: [1.5] Pregunta: Pregunta 2.2
-  Pregunta con Mayor mediana de opinion: [8] Pregunta: Pregunta 2.2
-  Pregunta con menor mediana de opinion: [3] Pregunta: Pregunta 2.1
-  Pregunta con mayor moda de opinion: [8] Pregunta: Pregunta 2.2
+  Pregunta con mayor promedio de opinion: [8.5] Pregunta: Pregunta 1.2
+  Pregunta con menor promedio de opinion: [1.5] Pregunta: Pregunta 2.1
+  Pregunta con mayor promedio de experticia: [4.5] Pregunta: Pregunta 1.2
+  Pregunta con menor promedio de experticia: [1.5] Pregunta: Pregunta 2.1
+  Pregunta con Mayor mediana de opinion: [8] Pregunta: Pregunta 1.2
+  Pregunta con menor mediana de opinion: [1] Pregunta: Pregunta 2.1
+  Pregunta con mayor moda de opinion: [7] Pregunta: Pregunta 1.2
   Pregunta con menor moda de opinion: [1] Pregunta: Pregunta 2.1
-  Pregunta con mayor extremismo: [50.0] Pregunta: Pregunta 2.2
-  Pregunta con mayor consenso: [50.0] Pregunta: Pregunta 2.2
+  Pregunta con mayor extremismo: [25.0] Pregunta: Pregunta 1.2
+  Pregunta con mayor consenso: [50.0] Pregunta: Pregunta 2.1

@@ -4,7 +4,8 @@ from Clases.Tema import Tema
 from Clases.Encuesta import Encuesta
 from AlgoritmoOrd.merge_sort import merge_sort
 from controller.controlador import leer_desde_txt
-
+import time
+inicio = time.perf_counter()
 def generar_salida(encuestados, temas, encuesta):
     salida = []
     salida.append("Resultados de la encuesta:\n")
@@ -41,7 +42,7 @@ def generar_salida(encuestados, temas, encuesta):
 # PROGRAMA PRINCIPAL (main)
 # --------------------------
 
-archivo_txt = "TestFiles/Test5.txt"  # o donde tengas el archivo
+archivo_txt = "TestFiles/Test7.txt"  # o donde tengas el archivo
 encuestados, temas = leer_desde_txt(archivo_txt)
 
 # Ordenar los temas
@@ -59,3 +60,5 @@ print(texto_final)
 # Guardar en archivo de texto
 with open("resultados_encuesta.txt", "w", encoding="utf-8") as f:
     f.write(texto_final)
+fin = time.perf_counter()
+print(f"Tiempo de ejecución: {fin - inicio:.20f} segundos")
