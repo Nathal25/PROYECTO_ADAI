@@ -1,0 +1,18 @@
+Beatriz Naranjo, Experticia: 3, Opinión: 3
+Camilo Ortega, Experticia: 4, Opinión: 4
+Daniela Pineda, Experticia: 5, Opinión: 5
+Ernesto Quintero, Experticia: 6, Opinión: 6
+Fernanda Rojas, Experticia: 7, Opinión: 7
+Germán Salazar, Experticia: 8, Opinión: 8
+Helena Tovar, Experticia: 9, Opinión: 9
+Iván Urrutia, Experticia: 10, Opinión: 10
+Jessica Villa, Experticia: 1, Opinión: 1
+Kevin Wilches, Experticia: 2, Opinión: 2
+Laura Ximénez, Experticia: 4, Opinión: 4
+Mauricio Yáñez, Experticia: 6, Opinión: 6
+
+{1, 2, 3, 4}
+{5, 6, 7, 8}
+
+{9, 10}
+{11, 12}

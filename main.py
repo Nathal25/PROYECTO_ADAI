@@ -41,7 +41,7 @@ def generar_salida(encuestados, temas, encuesta):
 # PROGRAMA PRINCIPAL (main)
 # --------------------------
 
-archivo_txt = "TestFiles/Test1.txt"  # o donde tengas el archivo
+archivo_txt = "TestFiles/Test5.txt"  # o donde tengas el archivo
 encuestados, temas = leer_desde_txt(archivo_txt)
 
 # Ordenar los temas
