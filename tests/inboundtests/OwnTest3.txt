@@ -1,0 +1,18 @@
+Oscar Díaz, Experticia: 9, Opinión: 8
+Paula Torres, Experticia: 8, Opinión: 7
+Raúl Sánchez, Experticia: 7, Opinión: 6
+Sara Romero, Experticia: 6, Opinión: 5
+Tomás Álvarez, Experticia: 5, Opinión: 4
+Úrsula Herrera, Experticia: 4, Opinión: 3
+Víctor Pérez, Experticia: 3, Opinión: 2
+Wendy Lara, Experticia: 2, Opinión: 1
+Ximena Niño, Experticia: 1, Opinión: 0
+Yerson Muñoz, Experticia: 2, Opinión: 9
+Zulema Castro, Experticia: 10, Opinión: 10
+Álvaro Márquez, Experticia: 5, Opinión: 4
+
+{1, 2, 3}
+{4, 5, 6}
+
+{7, 8, 9}
+{10, 11, 12}

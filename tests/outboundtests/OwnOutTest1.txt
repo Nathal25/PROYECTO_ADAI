@@ -1,0 +1,32 @@
+[6.17] Tema 2:
+    [9.00] Pregunta2.2:(11,10)
+    [3.33] Pregunta2.1:(1,4,5)
+[5.04] Tema 1:
+    [5.75] Pregunta1.1:(6,7,2,12)
+    [4.33] Pregunta1.2:(9,8,3)
+
+
+Lista de Encuestados:
+   8, Nombre:Irene Parra, Experticia:10, Opinión:5
+   4, Nombre:Esteban Cárdenas, Experticia:9, Opinión:3
+   3, Nombre:Diana León, Experticia:8, Opinión:2
+   5, Nombre:Felipe Romero, Experticia:7, Opinión:1
+   9, Nombre:Jorge Silva, Experticia:6, Opinión:6
+   2, Nombre:Carlos Gómez, Experticia:6, Opinión:4
+   1, Nombre:Ana Ríos, Experticia:5, Opinión:6
+   6, Nombre:Gabriela Vélez, Experticia:4, Opinión:9
+   7, Nombre:Héctor Morales, Experticia:3, Opinión:7
+   12, Nombre:Mariana Londoño, Experticia:2, Opinión:3
+   10, Nombre:Karen Beltrán, Experticia:2, Opinión:8
+   11, Nombre:Luis Valdez, Experticia:1, Opinión:10
+
+
+Resultados:
+    Pregunta con mayor promedio de opinion:[9.00] Pregunta: 2.2
+    Pregunta con menor promedio de opinion:[3.33] Pregunta: 2.1
+    Pregunta con mayor mediana de opinion:[8.00] Pregunta: 2.2
+    Pregunta con menor mediana de opinion:[3.00] Pregunta: 2.1
+    Pregunta con mayor valor de moda de opinion:[8.00] Pregunta: 2.2
+    Pregunta con menor valor de moda de opinion:[1.00] Pregunta: 2.1
+    Pregunta con mayor valor de extremismo:[0.50] Pregunta: 2.2
+    Pregunta con mayor valor de concenso:[0.50] Pregunta: 2.2

@@ -1,0 +1,18 @@
+Ana Ríos, Experticia: 5, Opinión: 6
+Carlos Gómez, Experticia: 6, Opinión: 4
+Diana León, Experticia: 8, Opinión: 2
+Esteban Cárdenas, Experticia: 9, Opinión: 3
+Felipe Romero, Experticia: 7, Opinión: 1
+Gabriela Vélez, Experticia: 4, Opinión: 9
+Héctor Morales, Experticia: 3, Opinión: 7
+Irene Parra, Experticia: 10, Opinión: 5
+Jorge Silva, Experticia: 6, Opinión: 6
+Karen Beltrán, Experticia: 2, Opinión: 8
+Luis Valdez, Experticia: 1, Opinión: 10
+Mariana Londoño, Experticia: 2, Opinión: 3
+
+{2, 6, 7, 12}
+{3, 8, 9}
+
+{1, 4, 5}
+{10, 11}

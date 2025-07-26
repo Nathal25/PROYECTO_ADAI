@@ -1,0 +1,32 @@
+[5.50] Tema 1:
+    [7.00] Pregunta1.1:(1,2,3)
+    [4.00] Pregunta1.2:(4,5,6)
+[4.33] Tema 2:
+    [7.67] Pregunta2.2:(11,10,12)
+    [1.00] Pregunta2.1:(7,8,9)
+
+
+Lista de Encuestados:
+   11, Nombre:Zulema Castro, Experticia:10, Opinión:10
+   1, Nombre:Oscar Díaz, Experticia:9, Opinión:8
+   2, Nombre:Paula Torres, Experticia:8, Opinión:7
+   3, Nombre:Raúl Sánchez, Experticia:7, Opinión:6
+   4, Nombre:Sara Romero, Experticia:6, Opinión:5
+   12, Nombre:Álvaro Márquez, Experticia:5, Opinión:4
+   5, Nombre:Tomás Álvarez, Experticia:5, Opinión:4
+   6, Nombre:Úrsula Herrera, Experticia:4, Opinión:3
+   7, Nombre:Víctor Pérez, Experticia:3, Opinión:2
+   10, Nombre:Yerson Muñoz, Experticia:2, Opinión:9
+   8, Nombre:Wendy Lara, Experticia:2, Opinión:1
+   9, Nombre:Ximena Niño, Experticia:1, Opinión:0
+
+
+Resultados:
+    Pregunta con mayor promedio de opinion:[7.67] Pregunta: 2.2
+    Pregunta con menor promedio de opinion:[1.00] Pregunta: 2.1
+    Pregunta con mayor mediana de opinion:[9.00] Pregunta: 2.2
+    Pregunta con menor mediana de opinion:[1.00] Pregunta: 2.1
+    Pregunta con mayor valor de moda de opinion:[6.00] Pregunta: 1.1
+    Pregunta con menor valor de moda de opinion:[0.00] Pregunta: 2.1
+    Pregunta con mayor valor de extremismo:[0.33] Pregunta: 2.1
+    Pregunta con mayor valor de concenso:[0.33] Pregunta: 1.1
